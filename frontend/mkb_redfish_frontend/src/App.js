@@ -6,6 +6,7 @@ function App() {
   const [dateTime, setDateTime] = useState(false);
   const [resetRom, setResetRom] = useState(false);
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -13,7 +14,7 @@ function App() {
         uefi_boot_mode: uefiBootMode,
         date_time: dateTime,
         reset_rom: resetRom
-      });
+      });``
       console.log(response.data.message);
     } catch (error) {
       console.error(error);
