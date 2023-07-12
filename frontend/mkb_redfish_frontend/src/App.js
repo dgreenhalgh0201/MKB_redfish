@@ -7,15 +7,20 @@ function App() {
   const [resetRom, setResetRom] = useState(false);
 
 
+  const api = axios.create({
+    baseURL: "http://localhost:9010"
+  }
+  )
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/set_bios_options', {
+      await api.post('/api/set_bios_options', {
         uefi_boot_mode: uefiBootMode,
         date_time: dateTime,
         reset_rom: resetRom
-      });``
-      console.log(response.data.message);
+      });
+      console.log(api.data.message);
     } catch (error) {
       console.error(error);
     }

@@ -1,16 +1,15 @@
 {
   "dependencies": {
-    "axios": "^1.4.0"
+    "axios": "^1.4.0",
+    "react-scripts": "^5.0.1"
   },
-
   "name": "mkb_RF",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:9010",
-
   "scripts": {
     "start": "react-scripts start",
-    "start-backend": "cd backend && venv/flask run --no-debugger",
+    "start-backend": "cd backend && flask run --no-debugger",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

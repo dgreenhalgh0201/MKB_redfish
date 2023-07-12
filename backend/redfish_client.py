@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import redfish
 
-app = Flask(__name__)
 
+app = Flask(__name__)
+CORS(app)
 
 @app.route('/api/set_bios_options', methods=['POST'])
 def set_bios_options():
