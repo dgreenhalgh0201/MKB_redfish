@@ -5,6 +5,11 @@ function App() {
   const [uefiBootMode, setUefiBootMode] = useState(false);
   const [dateTime, setDateTime] = useState(false);
   const [resetRom, setResetRom] = useState(false);
+  const [machineIP, setMachineIP] = useState(false);
+  const [machinePW, setMachinePW] = useState(false);
+  const [generation, setGen] = useState(false);
+  const [maker, setMake] = useState(false);
+
 
 
   const api = axios.create({
@@ -18,7 +23,11 @@ function App() {
       await api.post('/api/set_bios_options', {
         uefi_boot_mode: uefiBootMode,
         date_time: dateTime,
-        reset_rom: resetRom
+        reset_rom: resetRom,
+        username: machineIP,
+        password: machinePW,
+        gen: generation,
+        make: maker
       });
       console.log(api.data.message);
     } catch (error) {
@@ -28,6 +37,24 @@ function App() {
 
   return (
     <div>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          IP Address:
+          <input type="text" onChange={setMachineIP}/>
+        </label>  
+        <label>
+          <input type="text" onChange={setMachinePW} />
+        </label>
+        <label>
+          Make:
+          <input type="text" onChange={setMake}/>
+        </label>
+        <label>
+        Gen:
+          <input type="text" onChange={setGen}/>
+        </label>
+      </form>
       <h1>Set BIOS Options</h1>
       <form onSubmit={handleSubmit}>
         <label>
