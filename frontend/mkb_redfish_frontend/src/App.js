@@ -20,7 +20,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.post('/api/set_bios_options', {
+      const payload = {
         uefi_boot_mode: uefiBootMode,
         date_time: dateTime,
         reset_rom: resetRom,
@@ -28,8 +28,14 @@ function App() {
         password: machinePW,
         gen: generation,
         make: maker
+      };
+      await api.post('/api/set_bios_options', JSON.stringify(payload), {
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
       console.log(api.data.message);
+      console.log("SUCCESS");
     } catch (error) {
       console.error(error);
     }
@@ -41,9 +47,10 @@ function App() {
       <form onSubmit={handleSubmit}>
         <label>
           IP Address:
-          <input type="text" onChange={setMachineIP}/>
+          <input type="text" value={machineIP} onChange={(e) => setMachineIP(e.target.value)} />
         </label>  
         <label>
+          Password:
           <input type="text" onChange={setMachinePW} />
         </label>
         <label>
