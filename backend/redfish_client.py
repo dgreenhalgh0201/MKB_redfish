@@ -12,16 +12,16 @@ def set_bios_options():
     uefi_boot_mode = data.get('uefi_boot_mode', False)
     date_time = data.get('date_time', False)
     reset_rom = data.get('reset_rom', False)
-    base_url = data.get('url', False)
-    username = data.get('username', False)
-    password = data.get('password', False)
+    loginIP = data.get('url', False)
+    user = data.get('username', False)
+    pw = data.get('password', False)
     gen = data.get('gen', False)
     make = data.get('make', False)
 
-    redfish_client = redfish.redfish_client(base_url, username, password)
+    redfish_obj= redfish.redfish_client(base_url=loginIP, username =  user, password = pw, default_prefix = '/redfish/v1/')
 
     # Connect to the Redfish API
-    redfish_client.login()
+    redfish_obj.login(auth = "session")
 
     if make == 'DELL':
         if uefi_boot_mode:

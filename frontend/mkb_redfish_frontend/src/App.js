@@ -29,9 +29,12 @@ function App() {
         gen: generation,
         make: maker
       };
-      await api.post('/api/set_bios_options', JSON.stringify(payload), {
+
+      const JSONpayload = JSON.stringify(payload.data)
+
+      await api.post('/api/set_bios_options', payload, {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type':'application/json'
         }
       });
       console.log(api.data.message);
