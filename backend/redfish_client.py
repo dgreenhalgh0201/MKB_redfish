@@ -18,7 +18,9 @@ def set_bios_options():
     gen = data.get('gen', False)
     make = data.get('make', False)
 
-    redfish_obj= redfish.redfish_client(base_url=loginIP, username =  user, password = pw, default_prefix = '/redfish/v1/')
+    print(data)
+
+    redfish_obj= redfish.redfish_client(base_url=loginIP, username =  user, password = pw)
 
     # Connect to the Redfish API
     redfish_obj.login(auth = "session")
