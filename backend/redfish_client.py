@@ -20,30 +20,18 @@ def set_bios_options():
 
     print(data)
 
+    if make.toLowerCase == "dell":
+        user = "root"
+        pw = "calvin"
+    else:
+        user = "Administrator"
+
     redfish_obj= redfish.redfish_client(base_url=loginIP, username =  user, password = pw)
 
     # Connect to the Redfish API
     redfish_obj.login(auth = "session")
 
-    if make == 'DELL':
-        if uefi_boot_mode:
-            set_uefi_DELL(gen)
 
-        if date_time:
-            set_date_time_DELL(gen)
-
-        if reset_rom:
-            set_rom_DELL(gen)
-
-    else:
-        if uefi_boot_mode:
-            set_uefi_HP(gen)
-
-    if date_time:
-        set_date_time_HP(gen)
-
-    if reset_rom:
-        set_rom_HP(gen)
 
     # Disconnect from the Redfish API
     redfish_client.logout()

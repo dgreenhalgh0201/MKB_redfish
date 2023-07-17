@@ -5,10 +5,10 @@ function App() {
   const [uefiBootMode, setUefiBootMode] = useState(false);
   const [dateTime, setDateTime] = useState(false);
   const [resetRom, setResetRom] = useState(false);
-  const [machineIP, setMachineIP] = useState(false);
-  const [machinePW, setMachinePW] = useState(false);
-  const [generation, setGen] = useState(false);
-  const [maker, setMake] = useState(false);
+  const [machineIP, setMachineIP] = useState("");
+  const [machinePW, setMachinePW] = useState("");
+  const [generation, setGen] = useState("");
+  const [maker, setMake] = useState("");
 
 
 
@@ -30,14 +30,14 @@ function App() {
         make: maker
       };
 
-      const JSONpayload = JSON.stringify(payload.data)
+      const JSONpayload = JSON.stringify(payload)
 
-      await api.post('/api/set_bios_options', payload, {
+      await api.post('/api/set_bios_options', JSONpayload, {
         headers: {
           'Content-Type':'application/json'
         }
       });
-      console.log(api.data.message);
+      console.log(payload);
       console.log("SUCCESS");
     } catch (error) {
       console.error(error);
