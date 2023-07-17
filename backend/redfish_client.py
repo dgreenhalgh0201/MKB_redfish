@@ -20,7 +20,7 @@ def set_bios_options():
 
     print(data)
 
-    if make.toLowerCase == "dell":
+    if make.lower() == "dell":
         user = "root"
         pw = "calvin"
     else:
@@ -34,7 +34,7 @@ def set_bios_options():
 
 
     # Disconnect from the Redfish API
-    redfish_client.logout()
+    redfish_obj.logout()
 
     return jsonify({'message': 'BIOS options set successfully'})
 

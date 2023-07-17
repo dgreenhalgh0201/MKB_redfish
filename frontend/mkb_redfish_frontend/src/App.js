@@ -32,10 +32,12 @@ function App() {
 
       const JSONpayload = JSON.stringify(payload)
 
-      await api.post('/api/set_bios_options', JSONpayload, {
+      await api.post('/api/set_bios_options', payload, {
+        /*
         headers: {
           'Content-Type':'application/json'
         }
+        */
       });
       console.log(payload);
       console.log("SUCCESS");
